@@ -48,6 +48,12 @@ Route::get('/user/{grade?}/{id?}', function ( $b = 'id', $a = 'grade') {
 })->name('userInfo');
 ```
 
+뷰단에서 public asset 경로 가져오는법
+```
+1. <?= asset('css/app.css')?>
+2. {{URL::asset('css/app.css')}}
+```
+
 View단에 데이터 전달방법
 ```
 Route::get('/greeting', function () {
@@ -74,6 +80,30 @@ RRoute::get('/greeting', function () {
  //    return view('greeting')->with('name','JANG');
  });
 ```
+
+
+라라벨은 외부패키지 가져다쓸 수 있는데 가져다 쓸려면 어디다 꽂아야함
+그걸 AppServiceProvider.php에 등록
+등록시 App::environment(); 로 환경 조건체크하여 환경별 분기 등록한다
+https://laravel.kr/docs/5.4/providers#registering-providers
+/myapp/app/Providers/AppServiceProvider.php에
+```public function register``` 메소드 내부에 ```register``` 메소드로 패키지의 서비스 프로바이더를 등록해준다.
+보통 패키지들은 서비스프로바이더 클래스가 존재하며 해당클래스를 차장서 등록하면됨
+```
+public function register()
+    {
+        if(\App::environment('local')){
+            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        }
+    }
+```
+```
+프로바이더 레지스터시 아래처럼 작성하면 스트링으로 리턴함
+ \Barryvdh\Debugbar\ServiceProvider::class
+=> "Barryvdh\Debugbar\ServiceProvider"
+```
+
+
 
 ### 블레이드
 주석은 이렇게 ```{{-- //확장한 부모의 겹치는 섹션명을 사용한다.--}}```
@@ -114,7 +144,19 @@ Route::get('/login', function(){
 
 
 ##TIP
+composer dump-autoload
+마이그레이션파일은 psr-4 오토로딩을 하지 않기때문에 파일명 변경시 composer dump-autoload로 컴포저에 적용해줘야함
 
+이미 만들어진 DB Schema를 라라벨 마이그레이션으로 추출하는 컴포넌트입니다.
+https://github.com/Xethron/migrations-generator
+
+마이그레이션 생성후 아무것도 안하고
+artisan migrate
+하고 마이그레이션 파일 스키마수정후
+artisan migrate하면 변경할게 없다고 나온다.
+이미 마이그레이션이 수행되어 테이블이 생성되었으므로
+artisan migrate:rollback 하여 롤백처리하고
+다시 artisan migrate 하면된다
 ##Question
 
 
