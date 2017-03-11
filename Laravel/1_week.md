@@ -1,5 +1,7 @@
 #01 :: 라라벨 스터디
-##Laravel 설치
+
+##Study
+###Laravel 설치
 - composer 사용 (컴포저 설치 후 컴포저를 통한 라라벨 프로젝트 생성)
   ```
   composer create-project --prefer-dist laravel/laravel blog
@@ -13,7 +15,7 @@
   ```
 
 
-##composer를 통한 의존성 관리
+###composer를 통한 의존성 관리
 composer를 사용하여 php의존성을 관리할 수 있다.
 install, update 명령어를 사용할 수 있는데 각각 사용케이스를 구분하자면 관리자와 사용자로 구분할 수 있을 것 같다.
 ```composer update```는 관리자용 명령어
@@ -26,7 +28,7 @@ install, update 명령어를 사용할 수 있는데 각각 사용케이스를 �
 
 > A 두 가지 방법이 있습니다. 첫째 사내에서 쓰는 사설 패키지스트를 운영하는 방법(설치형 소스가 공개되어 있습니다.). 둘째, 로컬이나 사설 깃허브 저장소에 올려놓고 가져오는 방법이 있습니다. 두번째 방법은 `composer private repository` 라는 키워드로 검색하시면 됩니다.
 
-##namespace
+###namespace
 보통 회사 이름\프로젝트\기능\하위기능 이름으로 합니다. e.g. `Tmon\FooProject\Command`
 개인프로젝트일 경우 회사 이름 대신 깃허브 ID를 사용합니다.
 일반적으로.. 그렇다는 겁니다.
@@ -37,7 +39,7 @@ use는 선언
 네임스페이스가있는 클래스 내부에서 전역멤버사용시 '\'붙여줘야지 php전역 멤버를찾고 '\'안하면 해당클래스의 네임스페이스 내부에서 찾음
 \Exception();
 
-##psr-4 autoload
+###psr-4 autoload
 오토로드는 컴포저로 설치한 애들 및 composer.json의 "autoload" : { 에설정된 애들을 한방에 불러주는 것
 오토로드는 require 파일경로를 하나로 묵어주는거고 use는 네임스페이스경로만
  뭐가 오토로더 대상인지는 vendor/하위 애들은 다 불려진다고 보면됨,

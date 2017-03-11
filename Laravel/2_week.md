@@ -1,5 +1,6 @@
 #02 :: 라라벨 스터디
 
+##Study
 짭스타그램 만들어보기
 ```
 ./routes
@@ -140,6 +141,14 @@ user마이그레이션 파일은 라라벨 프로젝트에 기본으로 있으�
 Route::get('/login', function(){
     return view('auth.login');
 });
+```
+
+### ORM
+모델을 생성하면 ```$fillable```는 사용한다고 생각하면
+```
+protected $fillable = [
+
+    ];
 ```
 
 
