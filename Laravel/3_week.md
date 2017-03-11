@@ -110,6 +110,6 @@ public/storage생김 외부에서 접근가능한 디렉토리
 \aaaa\ssss\ddd\DB 다써도된
 
 form url에 파라미터 전달
-```{{ modified_field('delet')}}```
+```{{ method_field('delet')}}``` request method set
 route('urlKey('user.destory')','[key('id')=>val($user->id)]');
 ##Question
