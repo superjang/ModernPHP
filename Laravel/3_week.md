@@ -112,4 +112,8 @@ public/storage생김 외부에서 접근가능한 디렉토리
 form url에 파라미터 전달
 ```{{ method_field('delet')}}``` request method set
 route('urlKey('user.destory')','[key('id')=>val($user->id)]');
+<a href="{{ route('posts.list', ['id'=>$post->id]) }}">
+// http://localhost:8000/posts/1
+<a href="{{ route('posts.list', ['id'=>$post->id, 'qParam1'=>'1', 'qParam2'=>'2']) }}">
+// http://localhost:8000/posts/1?qParam1=1&qParam2=2
 ##Question
